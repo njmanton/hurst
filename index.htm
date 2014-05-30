@@ -1,0 +1,77 @@
+<html lang="en" dir="ltr">
+
+<head>
+	<title>World Cup Goalmine</title>
+	<meta http-equiv="Content-Type" content="text/html;" charset="utf-8" />
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+</head>
+<style>
+body {
+	color: rgb(63,63,63);
+	font-family: 'Source Sans Pro', Arial, sans-serif;
+	background: url(wc-holding.orig.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+h1 {
+	font-size: 2.5em;
+	padding: 0;
+	margin: 0.2em 0;
+}
+body > div {
+	margin: 1em 0 0 1em;
+	text-align: center;
+	width: 40%;
+}
+#cd {
+	font-weight: bold;
+}
+</style>
+
+<body>
+	<div>
+		<img src="gm_logo_holding.png" alt="Goalmine Logo">
+		<h1>WORLD CUP 2014</h1>
+		<div id="cd">
+		</div>
+	</div>
+
+</body>
+
+<script>
+	var end = new Date('2014-06-12 17:00');
+
+	var _second = 1000,
+	 		_minute = _second * 60,
+	 		_hour = _minute * 60,
+	 		_day = _hour * 24,
+	 		timer;
+
+	 var el = document.getElementById('cd');
+
+	function showRemaining() {
+		var now = new Date();
+		var distance = end - now;
+		if (distance < 0) {
+			clearInterval(timer);
+			el.innerHTML = 'Kickoff!';
+			return;
+		}
+		var days = Math.floor(distance / _day);
+		var hours = Math.floor((distance % _day) / _hour);
+		var minutes = Math.floor((distance % _hour) / _minute);
+		var seconds = Math.floor((distance % _minute) / _second);
+
+		el.innerHTML = days + ' days ';
+		el.innerHTML += hours + ' hrs ';
+		el.innerHTML += minutes + ' mins ';
+		el.innerHTML += seconds + ' secs';
+	}
+
+	timer = setInterval(showRemaining, 1000);
+
+
+</script>
+</html>

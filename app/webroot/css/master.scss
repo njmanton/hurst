@@ -1,0 +1,276 @@
+/*-----------------------------------
+master.scss
+
+-----------------------------------*/
+
+// import other style sheets
+@import url('normalize.css');
+@import url('foundation.css');
+@import url('flags32.css');
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,600');
+
+// site-wide colours
+$bg-clr: #4c4a59;
+$fg-clr: #eee;
+$nav-clr: rgba(44,42,51,0.8);
+$sb-clr: #333;
+
+// table colours
+$team-clr: #d6063a; $team-clr: #00a859;
+$score-clr: #280661;
+$exp-clr: #333;
+$hilite-clr: #cef6e3;
+
+// variables for scoring colours
+$cs-clr: #3f3;
+$cd-clr: #ffde01;
+$cr-clr: #f99;
+
+// import partials
+@import '_tables';
+@import '_forms';
+
+#notifications {
+	padding: 1em 0;
+	.alert-box { // override foundation alert box settings
+		margin-bottom: 0.325em;
+	}
+}
+
+.has-tip { // override foundation class
+	font-weight: normal;
+	color: inherit;
+}
+
+.top-bar {
+	height: auto;
+}
+
+.row.full {
+	width: 100%;
+	max-width: 100%;
+}
+
+h2 {
+	text-align: center;
+	color: #fffee6;
+	font-family: inherit;
+}
+
+h4 {
+	text-align: left;
+	color: #fffee6;
+	font-size: 1em;
+	font-weight: bold;
+	border-bottom: 1px solid #fffee6;
+}
+
+ol li {
+	margin: 1em 0;
+}
+
+figure a {
+	margin: 0 auto;
+}
+
+.orphan-center {
+	margin: 0 auto 1.5em 0;
+	text-align: center;
+	font-size: 0.9em;
+}
+
+// keyframe animation for updating rows
+@keyframes fin {
+	from {background-color: #7f7;}
+	to {background-color: inherit;}
+}
+
+@-webkit-keyframes fin {
+	from {background-color: #7f7;}
+	to {background-color: inherit;}
+}
+
+.joker {
+	background-image: url(../img/joker_icon.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+.pts0 { }
+/*.pts1, .pts2  { background-color: $cr-clr ;}
+.pts3, .pts6  { background-color: $cd-clr ;}
+.pts5, .pts10 { background-color: $cs-clr ;}*/
+
+.pts1, .pts2  { border-right: 5px solid $cr-clr ;}
+.pts3, .pts6  { border-right: 5px solid $cd-clr ;}
+.pts5, .pts10 { border-right: 5px solid $cs-clr ;}
+
+body {
+	background: $bg-clr;
+	color: $fg-clr;
+	font-family: 'Open Sans', 'Helvetica', sans-serif;
+}
+
+header {
+	background-image: url(../img/gm_banner_cd1.png); 
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 11em;
+	a {
+		color: $nav-clr;
+		font-family: Impact, arial;
+		font-weight: bold;
+		font-size: 4em;
+	}
+	a:hover {
+		color: $bg-clr;
+	}
+	span {
+		vertical-align: middle;
+	}
+	div {
+		vertical-align: middle;
+		padding: 1em;
+		letter-spacing: 0.1em;
+	}
+	img {
+		height: 7.2rem;
+		width: 7.2rem;
+		margin-right: 0.8rem;
+	}
+}
+
+span.winm {
+	color: #e00;
+	font-size: 0.8em;
+}
+
+.sidebar {
+	background-color: $sb-clr;
+}
+
+nav {
+	background-color: $nav-clr;
+	a {
+		display: block;
+		color: $fg-clr;
+		width: 100%;
+		height: 100%;
+		line-height: 2.4em;
+		-webkit-transition: background-color 0.2s ease-in;
+		-moz-transition: background-color 0.2s ease-in;
+		-o-transition: background-color 0.2s ease-in;
+		transition: background-color 0.2s ease-in;
+	}
+	li {
+		display: inline-block;
+		font-size: 0.9em;
+		padding: 0 0.4em;
+		text-align: center;
+	}
+	a:hover {
+		background-color: $team-clr;
+		color: inherit;
+	}
+	.menu li a {
+		padding: 0 0.3em;
+		margin: 0;
+	}
+	ul {
+		margin-bottom: 0;
+		display: inline-block;
+	}
+}
+
+nav:not(#mainnav) {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.matchlists, .teamlists {
+	display: none;
+	a {
+	line-height: 1.2em !important;
+	font-size: 0.7em;
+	}
+	li {
+		padding: 0.2em 0;
+		display: block;
+	}
+}
+
+.teamlists {
+	a {
+		font-size: 0.8em;
+	}
+	li  {
+		text-align: left;
+	}
+}
+
+label {
+	color: inherit;
+}
+
+footer {
+	border-top: 1px solid #444;
+	margin-top: 2em !important;
+	img {
+		float: right;
+		margin-left: 0.6em;
+	}
+}
+
+.ajaxChange {
+	animation-name: fin;
+	animation-duration: 3s;
+	-webkit-animation-name: fin;
+	-webkit-animation-duration: 3s;
+}
+
+abbr {
+	font-size: 100%;
+	color: inherit;
+}
+
+img.badge {
+	width: 80%;
+	max-width: 400px;
+	max-height: 400px;
+	display: block;
+	margin: 1em auto;
+}
+
+.scoreLine {
+	input {
+		display: inline;
+		width: 8em;
+		&.time {
+			width: 3.6em;
+		}
+	}
+	select {
+		width: 3.5em;
+	}
+}
+
+#resolution {
+	display: none;
+}
+
+#hchart {
+	background-color: inherit;
+}
+
+.smalltable+p {
+	text-align: center;
+}
+
+.infobox {
+	h4 {
+		color: $bg-clr;
+	}
+}
+
+// last
+@import '_mediaquery';

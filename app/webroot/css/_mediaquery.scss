@@ -1,0 +1,11 @@
+@media all and (min-width: 850px) {
+	nav:not(#mainnav) {
+		width: 80%;
+		.menu li a {
+			padding: 0 0.6em;
+		}
+	}
+	.team {
+		width: 200px;
+	}
+}

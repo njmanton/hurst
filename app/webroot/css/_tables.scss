@@ -44,6 +44,7 @@ table {
 			padding: 0.6em 0.4em;
 			border-top: 1px solid #888;
 			border-bottom: 1px solid #888;
+			text-align: center;
 		}
 		th, tfoot td {
 			padding: 0.6em 1.3em;
@@ -114,11 +115,12 @@ table {
 		margin: 0.8em 0.4em;
 	}
 	input[type="text"] {
-		width: 2.5em;
-		height: 1.6em;
+		width: 3em;
+		height: 2em;
 		display: inline;
 		margin: 0;
-		padding: 0 0.5em;
+		padding: 0 0.3em;
+		text-align: center;
 	}
 	.scoreLine input[type="text"] {
 		height: 2.3125em;

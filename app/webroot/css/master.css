@@ -27,7 +27,8 @@ table {
     table.league tbody tr td {
       padding: 0.6em 0.4em;
       border-top: 1px solid #888;
-      border-bottom: 1px solid #888; }
+      border-bottom: 1px solid #888;
+      text-align: center; }
     table.league th, table.league tfoot td {
       padding: 0.6em 1.3em;
       font-weight: bold; }
@@ -79,11 +80,12 @@ table {
     display: inline;
     margin: 0.8em 0.4em; }
   table input[type="text"] {
-    width: 2.5em;
-    height: 1.6em;
+    width: 3em;
+    height: 2em;
     display: inline;
     margin: 0;
-    padding: 0 0.5em; }
+    padding: 0 0.3em;
+    text-align: center; }
   table .scoreLine input[type="text"] {
     height: 2.3125em;
     width: 8em; }
@@ -332,12 +334,12 @@ nav:not(#mainnav) {
   margin: 0 auto;
   width: 100%; }
 
-.matchlists, .teamlists {
+#matchlists, #teamlists {
   display: none; }
-  .matchlists a, .teamlists a {
+  #matchlists a, #teamlists a {
     line-height: 1.2em !important;
     font-size: 0.7em; }
-  .matchlists li, .teamlists li {
+  #matchlists li, #teamlists li {
     padding: 0.2em 0;
     display: block; }
 

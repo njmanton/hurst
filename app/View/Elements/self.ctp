@@ -21,7 +21,7 @@
 	<div>
 		<h4>My Leagues</h4>
 		<?php if (empty($leagues)): ?>
-			<p>You have not joined any leagues yet</p>
+			<p class="orphan-center">You have not joined any leagues yet</p>
 		<?php else: ?>
 			<ul>
 				<?php foreach($leagues as $l): ?>

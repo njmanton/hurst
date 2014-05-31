@@ -1,7 +1,7 @@
 <?php //$this->layout = 'login'; ?>
-<section>
-	<h2>Please enter your username and password</h2>
-	<div class="userform">
+<section class="row">
+	<h2>Login</h2>
+	<div class="userform medium-centered columns medium-8">
 	<?php echo $this->Session->flash(); ?>
 	<?php echo $this->Form->create('User');?>
 		<fieldset>
@@ -11,7 +11,8 @@
 		?>
 		</fieldset>
 		<input type="submit" class="tiny button" value="Login" />
+		<small><a href="/users/forgot">Forgot password?</a></small>
 	<?php echo $this->Form->end();?>
-	<a href="/users/forgot">Forgot password?</a>
+	
 	</div>
 </section>

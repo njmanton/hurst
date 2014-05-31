@@ -107,6 +107,10 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+CakeLog::config('admin', array(
+	'engine' => 'File',
+	'file' => 'admin'
+));
 
 const APP_NAME = 'World Cup Goalmine';
 const APP_VERSION = 'v0.1';

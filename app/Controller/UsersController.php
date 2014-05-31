@@ -137,7 +137,7 @@ class UsersController extends AppController {
 		// has data been submitted from the form
 		if ($this->request->is('post')) {
 
-			$response = $this->User->createInvite($this->data['Invite'], $this->Auth->user('id'));
+			$response = $this->User->createInvite($this->data['Invite'], $this->Auth->user('email'));
 			$this->Session->setFlash($response[1], 'custom-flash', array('class' => $response[0]));
 
 		}

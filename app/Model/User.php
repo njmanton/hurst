@@ -218,7 +218,7 @@ class User extends AppModel {
 	Desc:				creates an unverified user account and
 							sends an email to invitee
 	Params:			$data - form data
-							$referer - user who sent invite
+							$referer - email of user who sent invite
 	Returns:		$response - array(type, message)
 	Date:				1/1/14
 	----------------------------------------------------*/
@@ -248,25 +248,25 @@ class User extends AppModel {
 						->subject($subject);
 			try {
 				if ($data['copy'] == 1) {
-					$email->cc($data['referrer']);
+					$email->cc($referer);
 				}
 				$email->send($message);
 				if ($this->save($tempuser)) {
-					$this->log(__('invite email sent to %s', $data['email']),'admin');
+					$this->log(__('invite email sent to %s', $data['email']), 'admin');
 					$response = array('success', __('An invite to %s been successfully sent. If you requested a copy, you should find it in your inbox shortly.', $data['email']));
 				} else {
-					$this->log(__('invite email NOT sent to %s, but tempuser created', $data['email']),'admin');
+					$this->log(__('invite email NOT sent to %s, but tempuser created', $data['email']), 'admin');
 					$response = array('warning', __('The email has been sent, but there was a problem creating the user. Please contact support'));
 				}
 
 			} catch (SocketException $e) {
-				$this->log(__('Problem sending invite email to %s', $data['email']),'admin');
+				$this->log(__('Problem sending invite email to %s', $data['email']), 'admin');
 				$response = array('warning', 'There was a problem in sending the invite email. Please try again later.');
 			}
 
 		} catch (SocketException $e) {
-			$this->log(__('Problem sending invite email to %s', $data['email']),'admin');
-			$response = array('warning', 'Sorry, that email couldn\'t be sent');
+			$this->log(__('Problem sending invite email to %s', $data['email']), 'admin');
+			$response = array('warning', __('Sorry, that email couldn\'t be sent to %s. Please check the sender and retry', $data['email']));
 		}
 
 

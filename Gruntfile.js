@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['app/webroot/js/*.js'],
+        src: ['app/webroot/js/dev/*.js'],
         dest: 'app/webroot/js/<%= pkg.name %>.js'
       }
     },
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+          'app/webroot/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
         }
       }
     }

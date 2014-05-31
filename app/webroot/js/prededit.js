@@ -39,6 +39,7 @@ $(function() {
 	$('#predIndexForm :radio').on('click', function() {
 		var radio_selectors = ':radio[name="' + $(this).attr('name') + '"]';
 		var radios = [];
+		var row = $(this).closest('td');
 
 		$(radio_selectors).each(function(index) {
 			if (!$(this).attr('disabled')) {
@@ -58,7 +59,7 @@ $(function() {
 
 			},
 			success: function(response) {
-
+				row.addClass('ajaxChange');
 			}
 		});
 

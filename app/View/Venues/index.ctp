@@ -5,7 +5,7 @@
 
 	<div id="brazil-map" style="width: 640px; height: 640px; margin: 1rem auto;"></div>
 
-	<script type="text/javascript" 
+	<script async type="text/javascript" 
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADVGUeoLZJz5Fc0sCdDGWKPk4bFPjc9Ao&sensor=false">
 	</script>
 	<script type="text/javascript"
@@ -33,7 +33,6 @@
 		  	type: 'GET',
 		  	success: function(r) {
 		  		$.each(r, function(k,v) {
-		  			console.log(v.Venue);
 		  			marker = new google.maps.Marker({
 		  				position: new google.maps.LatLng(v.Venue.lat, v.Venue.lng),
 		  				map: map,

@@ -10,7 +10,7 @@
 		echo $this->Html->css('master'); // @includes all other stylesheets
 		echo $this->Html->script('vendor/modernizr-latest'); // should load in head for html5shim & stop FOUC
 	?>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+	<script async src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
 	<script>window.jQuery || document.write ('<script src="/js/vendor/jquery-1.11.0.min.js">\x3C/script>')</script>
 	<script src="/js/vendor/highcharts.js"></script>
 </head>

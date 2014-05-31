@@ -24,7 +24,7 @@
 	
 	<?php echo $this->element('matchlists'); ?>
 	
-	<div class="teamlists">
+	<div id="teamlists">
 
 		<ul class="small-block-grid-4 large-block-grid-8">
 		<?php $x = 0; $teams = $this->requestAction('/teams/head'); ?>
@@ -44,35 +44,6 @@
 		<?php endforeach; ?>
 		</ul>
 
-		<?php// debug ($teams); ?>
 	</div>
 
 </nav>
-<script>
-
-$(function() {
-
-	var ml = $('.matchlists'), tl = $('.teamlists');
-
-		$('#showml').on('click', function() {
-			tl.hide();
-			if (ml.css('display') == 'none') {
-				ml.show();
-			} else {
-				ml.hide();
-			}
-		});
-
-		$('#showtl').on('click', function() {
-			ml.hide();
-			if (tl.css('display') == 'none') {
-				tl.show();
-			} else {
-				tl.hide();
-			}
-		});
-
-})
-
-
-</script>

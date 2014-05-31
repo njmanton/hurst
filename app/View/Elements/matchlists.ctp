@@ -1,4 +1,4 @@
-<div class="matchlists">
+<div id="matchlists">
 	<ul class="small-block-grid-4 large-block-grid-8">
 	<?php $matches = $this->requestAction('/matches/head/'); ?>
 

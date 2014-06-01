@@ -8,6 +8,7 @@ class User extends AppModel {
 	public $hasMany = array(
 		'Prediction',
 		'LeagueUser',
+		'Post',
 		'League' => array(
 			'className'  => 'League',
 			'foreignKey' => 'organiser'

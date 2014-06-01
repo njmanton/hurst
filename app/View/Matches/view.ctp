@@ -117,8 +117,5 @@ $(function() {
 
 })
 
-
-
-
 </script>
 

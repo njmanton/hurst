@@ -13,7 +13,7 @@
 		}
 	?>
 
-	<section class="<?php echo ($side) ? 'medium-9' : ''; ?> columns" id="userpreds">
+	<section class="<?php echo ($side) ? 'large-9' : ''; ?> columns" id="userpreds">
 
 		<div class="sticky">
 			<nav role="navigation" data-topbar class="top-bar">

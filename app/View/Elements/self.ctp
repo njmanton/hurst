@@ -1,4 +1,4 @@
-<section class="medium-3 columns sidebar">
+<section class="large-3 columns sidebar">
 	<h2><?php echo $selected['username']; ?></h2>
 	<div>
 		<h4>Standings</h4>

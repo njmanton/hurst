@@ -219,7 +219,7 @@ class User extends AppModel {
 	Desc:				creates an unverified user account and
 							sends an email to invitee
 	Params:			$data - form data
-							$referer - email of user who sent invite
+							$referer - user who sent invite
 	Returns:		$response - array(type, message)
 	Date:				1/1/14
 	----------------------------------------------------*/
@@ -238,7 +238,7 @@ class User extends AppModel {
 			'username' => $temp,
 			'email' => $data['email'],
 			'password' => $temp,
-			'referredby' => $referer,
+			'referredby' => $referer['id'],
 			'validated' => 0
 		));
 
@@ -249,7 +249,7 @@ class User extends AppModel {
 						->subject($subject);
 			try {
 				if ($data['copy'] == 1) {
-					$email->cc($referer);
+					$email->cc($referer['email']);
 				}
 				$email->send($message);
 				if ($this->save($tempuser)) {

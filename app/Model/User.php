@@ -275,6 +275,48 @@ class User extends AppModel {
 
 	} // end createInvite
 
+	public function processSend($data) {
+	/*----------------------------------------------------
+	Function:		processSend
+	Desc:				sends bulk email to users
+	Params:			$data - form data
+	Returns:		flash response
+	Date:				7/6/14
+	----------------------------------------------------*/
+
+		$subject = (isset($data['subject'])) ? $data['subject'] : 'World Cup Goalmine update';
+		$onlypaid = (isset($data['onlypaid'])) ? $data['onlypaid'] : 0;
+
+		$arr = [
+			'fields' => ['User.email'],
+			'recursive' => 0,
+			'conditions' => ['User.email != ""', 'User.validated = 1']
+		];
+
+		if ($onlypaid) {
+			$arr['conditions'][] = ['User.paid' => 1];
+		}
+
+		$users = $this->find('list', $arr);
+
+		$res = null;
+
+		try {
+			$email = new CakeEmail('default');
+			$email->to(SENDER)
+						->from(SENDER)
+						->bcc($users)
+						->subject($subject);
+			$res = $email->send($data['body']);
+			$this->log(__('email sent to: %s', json_encode($users)), 'admin');
+
+		} catch (SocketException $e) {
+			$this->log(__('Error in sending email to %s', $l['User']['id']), 'admin');
+		}
+		return (is_null($res)) ? null : count($users);
+
+	} // end processSend
+
 	public function processForgot($data) {
 	/*----------------------------------------------------
 	Function:		processForgot

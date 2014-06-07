@@ -55,6 +55,25 @@ class UsersController extends AppController {
 
 	} // end view
 
+	public function send() {
+
+		// kick out non-admins
+		if (!$this->Auth->user('admin')) {
+			$this->flash(__('You must be an admin to send emails to users'), $this->referer, 2);
+		}
+
+		if ($this->request->is('post')) {
+			// form has been submitted
+			$response = $this->User->processSend($this->request->data);
+			if (is_null($response)) {
+				$this->Session->setFlash(__('There may have been a problem in sending that email'), 'custom-flash', array('class' => 'warning'));
+			} else {
+				$this->Session->setFlash(__('email sent to %s user(s)', $response), 'custom-flash', array('class' => 'success'));
+			}
+		}
+
+	} // end send
+
 	public function invites() {
 
 		if ($this->request->is('requested')) {

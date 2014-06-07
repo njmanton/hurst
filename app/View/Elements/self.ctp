@@ -14,6 +14,7 @@
 			<li><a href="/users/options">Account options</a></li>
 			<?php if ($user['admin'] == 1): ?>
 			<li><a href="/users/payment">Manage Payments</a> <em>(Admin)</em></li>
+			<li><a href="/users/send">Send email</a> <em>(Admin)</em></li>
 			<?php endif; ?>
 		</ul>
 	</div>

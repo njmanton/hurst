@@ -197,7 +197,7 @@ class LeaguesController extends AppController {
 		if ($this->request->is('post')) {
 
 			if ($this->League->save($tosave)) {
-				$response = 'Your request for a new league has successfully been sent for approval';
+				$response = 'Your request for a new league has successfully been sent for approval to an administrator';
 				$this->Session->setFlash($response, 'custom-flash', array('class' => 'success'));
 			} else {
 				$response = 'Sorry, there was a problem processing your request. Please try again later';

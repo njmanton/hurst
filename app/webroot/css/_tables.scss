@@ -59,7 +59,8 @@ table {
 		border-collapse: collapse;
 		border-spacing: 0;
 		text-align: center;
-
+	}
+	&.teamindex {
 		tr:nth-child(4n+4) td, tr td[rowspan] {
 			border-bottom: 1px dashed $fg-clr;
 		}
@@ -97,7 +98,7 @@ table {
 			width: 80%;
 		} 
 		td.teams, td.score {
-			font-size: 3em;
+			font-size: 2em;
 			font-weight: bold;
 			&.teams a {
 				line-height: 2.5em;

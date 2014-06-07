@@ -56,7 +56,7 @@ $(function() {
 				pids: radios
 			},
 			beforeSend: function() {
-
+				row.removeClass('ajaxChange');
 			},
 			success: function(response) {
 				row.addClass('ajaxChange');

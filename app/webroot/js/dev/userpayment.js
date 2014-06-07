@@ -21,6 +21,7 @@ $(function() {
 				}
 			},
 			success: function(response) {
+				console.log(response);
 				if (response['success'] === true) {
 					t.html('&#x2714;').removeClass('error');
 				} else {

@@ -2,6 +2,7 @@
 <?php $hw = $aw = $d = 0; ?>
 <?php list($hs, $as) = explode('-', $match['result']); ?>
 <section class="row">
+	<p></p>
 	<div class="medium-10 medium-centered columns">
 		<table class="matchresult">
 			<caption>

@@ -8,7 +8,7 @@
 				<th>Group</th>
 				<th>Name</th>
 				<th>Coach</th>
-				<th>World <span data-tooltip class="his-tip tip-bottom radius" title="World Rankings as of 20th Feb">Ranking</span></th>
+				<th>World <span data-tooltip class="his-tip tip-bottom radius" title="World Rankings as of 6th Jun">Ranking</span></th>
 			</tr>
 		</thead>
 		<tbody>

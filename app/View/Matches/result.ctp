@@ -1,8 +1,9 @@
 <?php $x = 0; $y = 100; ?>
 <?php $this->set('title_for_layout', __('%s v %s | Match %s', $match['TeamA']['name'], $match['TeamB']['name'], $match['Match']['id'])); ?>
-<form action="#" method="post" id="EditGoals">
-	<section class="row">
-		<div class="medium-10 medium-centered columns">
+
+<section>
+	<form action="#" method="post" id="EditGoals">
+		<div>
 			<table class="matchresult">
 				<tbody>
 					<tr>
@@ -13,6 +14,7 @@
 							<input type="hidden" value="<?php echo $match['TeamA']['id']; ?>" name="data[Match][teama]">
 							<input type="hidden" value="<?php echo $match['TeamB']['id']; ?>" name="data[Match][teamb]">	
 						</td>
+						<td class="teams"><a href=""><?php echo $match['TeamB']['name']; ?></a></td>
 					</tr>
 					<tr>
 						<td>
@@ -34,11 +36,7 @@
 								<?php endforeach; ?>
 							</div>
 						</td>
-					</tr>
-					<tr>
-						<td class="teams"><a href=""><?php echo $match['TeamB']['name']; ?></a></td>
-					</tr>
-					<tr>
+						<td></td>
 						<td>
 							<div id="teamb" data-tid="<?php echo $match['TeamB']['id']; ?>">
 								<?php foreach ($match['Goal'] as $hg): ?>
@@ -61,7 +59,6 @@
 					</tr>
 				</tbody>
 			</table>
-			
 			<div id="resolution">
 				<label for="shootout">Which team won the penalty shootout?
 					<select name="data[Match][shootout]" id="shootout">
@@ -73,5 +70,7 @@
 			</div>
 		</div>
 		<input type="submit" class="tiny button orphan-center">
-	</section>
-</form>
+
+	</form>
+</section>
+

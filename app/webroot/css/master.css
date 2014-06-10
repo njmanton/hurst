@@ -317,7 +317,7 @@ nav {
     transition: background-color 0.2s ease-in; }
   nav li {
     display: inline-block;
-    font-size: 0.9em;
+    font-size: 1em;
     padding: 0 0.4em;
     text-align: center; }
   nav a:hover {
@@ -406,3 +406,9 @@ img.badge {
 
   .team {
     width: 200px; } }
+@media only screen and (max-width: 45em) {
+  nav li a {
+    font-size: 1.6rem; }
+
+  nav .label {
+    font-size: 1rem; } }

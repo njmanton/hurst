@@ -100,6 +100,21 @@ class UsersController extends AppController {
 
 	} // end check
 
+	public function admin() {
+
+		if ($this->Auth->user('admin') != 1) {
+			throw new ForbiddenException();
+		}
+
+		$arr = [
+			'fields' => ['User.username', 'User.id', 'Referer.id' ,'User.email', 'User.lastlogin', 'Referer.username', 'User.validated', 'User.paid'],
+			'recursive' => 0
+		];
+
+		$this->set('users', $this->User->find('all', $arr));
+
+	}  // end admin
+
 	public function payment() {
 
 		if ($this->Auth->user('admin') != 1) {

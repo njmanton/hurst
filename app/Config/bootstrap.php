@@ -178,28 +178,30 @@ function positions($arr) {
 		$prevrank = 0; // rank of row n-1
 
 		foreach ($arr as $k=>&$t) {
-			if ($t['sortorder'] == $prevrank) {
-				$row++;
-				$equal = '=';
-			} else {
-				//$rank = ($t['paid'] == 1) ? ++$row : 0;
-				$rank = ++$row;
-				$equal = '';
+			if ($t['paid'] == 1) {
+				if ($t['sortorder'] == $prevrank) {
+					$row++;
+					$equal = '=';
+				} else {
+					//$rank = ($t['paid'] == 1) ? ++$row : 0;
+					$rank = ++$row;
+					$equal = '';
+				}
+				// if the row is top 3 or bottom 3, set 'show' flag for short table
+				if (($row < 4) || ($row > count($arr) - 3)) {
+					$t['show'] = 1;
+				}
+				// if row is third place, set the css flag to show a bottom 'tear' effect
+				if ($row == 3) {
+					$t['class'] = 'btear';
+				// conversely show a top tear effect for the 3rd bottom
+				} elseif ($row == count($arr)-2) {
+					$t['class'] = 'ttear';
+				}
+				//$t['rank'] = ($t['paid'] == 1) ? $rank . $equal : 'n/a';
+				$t['rank'] = $rank . $equal;
+				$prevrank = $t['sortorder'];
 			}
-			// if the row is top 3 or bottom 3, set 'show' flag for short table
-			if (($row < 4) || ($row > count($arr) - 3)) {
-				$t['show'] = 1;
-			}
-			// if row is third place, set the css flag to show a bottom 'tear' effect
-			if ($row == 3) {
-				$t['class'] = 'btear';
-			// conversely show a top tear effect for the 3rd bottom
-			} elseif ($row == count($arr)-2) {
-				$t['class'] = 'ttear';
-			}
-			//$t['rank'] = ($t['paid'] == 1) ? $rank . $equal : 'n/a';
-			$t['rank'] = $rank . $equal;
-			$prevrank = $t['sortorder'];
 		}
 
 		return $arr;

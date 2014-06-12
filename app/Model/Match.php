@@ -202,6 +202,7 @@ class Match extends AppModel {
 
 			$x = $m['Match']['id'];
 			$match[$x] = array(
+				'id' => $m['Match']['id'],
 				'order' => $m['Match']['stage_order'],
 				'date' => new DateTime($m['Match']['date']),
 				'tz' => $m['Venue']['utc_offset'],

@@ -23,7 +23,7 @@
 					<td class="team"><?php echo $m['teama']; ?></td>
 					<td class="score"><?php echo $m['result']; ?></td>
 					<td class="team"><?php echo $m['teamb']; ?></td>
-					<td><a href="/matches/<?php echo $k; ?>">View</a></td>
+					<td><a href="/matches/<?php echo $m['id']; ?>">View</a></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>

@@ -23,6 +23,7 @@
 				<li><a href="/matches/date">Matches by date</a></li>
 				<li><a href="/venues/">Venues</a></li>
 				<li><a href="/goals">Goals</a></li>
+				<li><a href="/goals/scorers">Scorers</a></li>
 			</ul>
 		</div>
 		

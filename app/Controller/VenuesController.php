@@ -39,4 +39,10 @@ class VenuesController extends AppController {
 
 	} // end api_index
 
+	// auth stuff below
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('index');
+	}
+
 } // end class

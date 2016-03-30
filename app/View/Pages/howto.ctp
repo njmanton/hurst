@@ -1,6 +1,6 @@
 <?php $this->set('title_for_layout', 'How to play | ' . APP_NAME); ?>
 <section class="row">
-	<div class="medium-12 columns">
+	<div class="medium-10 medium-centered columns">
 		<h2>How to play</h2>
 		<h4>Logging in</h4>
 		<p>You need to have an account to play Goalmine. You can only get an account through an invitation from an existing player.</p>

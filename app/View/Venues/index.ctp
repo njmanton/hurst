@@ -6,20 +6,23 @@
 	<div id="brazil-map" style="width: 640px; height: 640px; margin: 1rem auto;"></div>
 
 	<script async type="text/javascript" 
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADVGUeoLZJz5Fc0sCdDGWKPk4bFPjc9Ao&sensor=false">
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADVGUeoLZJz5Fc0sCdDGWKPk4bFPjc9Ao&sensor=false&callback=init_map">
 	</script>
 	<script type="text/javascript"
-		src="/js/infobox.js">
+		src="/js/vendor/infobox.js">
 	</script>
 
 	<script>
 
 		var marker, coords, map;
-		var inwin = new google.maps.InfoWindow({
-			content: ''
-		});
 
 		function init_map() {
+
+			
+			var inwin = new google.maps.InfoWindow({
+				content: ''
+			});
+			
 		  var mapOptions = {
 		    center: new google.maps.LatLng(-11.59305, -55.8545),
 		    zoom: 4,

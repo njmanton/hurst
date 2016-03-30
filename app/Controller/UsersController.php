@@ -95,7 +95,7 @@ class UsersController extends AppController {
 
 			return ($cnt) ? json_encode(true) : json_encode(false);
 		} else {
-			throw new MethodNotAllowedExeption();
+			throw new MethodNotAllowedException();
 		}
 
 	} // end check
@@ -271,6 +271,113 @@ class UsersController extends AppController {
 		}
 
 	} // end options
+
+	public function qualifiers() {
+
+		if ($this->request->is('ajax')) {
+
+			$this->autoRender = false;
+			$arr = [
+				'fields' => ['User.id', 'User.username'],
+				'conditions' => ['User.validated' => 1]
+			];
+			$us = $this->User->find('list', $arr);
+
+			foreach ($us as $k=>$u) { // loop through validated users
+				$y = 1;
+				for ($x = 1; $x < 32; $x += 4) {
+					$gp = chr(64 + $y++);
+					$predleagues[$u][$gp] = $this->User->Prediction->Match->Goal->Team->getTable($x, $k, true);
+				}
+			}
+
+			foreach ($predleagues as $k=>$u) {
+				foreach ($u as $g) {
+					$t1 = array_shift($g);
+					$t2 = array_shift($g);
+					$quals[$k][] = $t1['name'];
+					$quals[$k][] = $t2['name'];
+				}
+			}
+			//debug ($quals);
+
+			$real = ['Brazil','Chile','Colombia','Uruguay','Netherlands','Mexico','Costa Rica','Greece','France','Nigeria','Germany','Algeria','Argentina','Switzerland','Belgium','USA'];
+			foreach ($quals as $k=>$u) {
+				foreach ($u as $t) {
+					if (in_array($t, $real)) {
+						$table[$k]++;
+					}
+				}
+			}
+			arsort($table);
+			foreach ($table as $k=>$t) {
+				$ajax['labels'][] = $k;
+				$ajax['values'][] = $t;
+			}
+			return json_encode($ajax);
+
+		}
+
+	} // end qualifiers
+
+	public function setko($group = null) {
+
+		if ($this->Auth->user('admin') != 1) {
+			throw new MethodNotAllowedException();
+		} else {
+			if (in_array($group, ['A', 'C', 'D', 'E', 'F', 'G', 'H'])) {
+				$this->set('gp', $group);
+				$arr = [
+					'fields' => ['Team.id', 'Team.name'],
+					'recursive' => 0,
+					'conditions' => ['Team.group' => $group]
+				];
+				$this->set('teams', $this->User->Prediction->Match->Goal->Team->find('list', $arr));
+				if ($this->request->is('post')) {
+
+					$data = $this->request->data;
+					switch ($group) {
+						case 'A':
+							$midw = 49;
+							$midr = 51;
+							break;
+						case 'C':
+							$midw = 50;
+							$midr = 52;
+							break;
+						case 'D':
+							$midw = 52;
+							$midr = 50;
+							break;
+						case 'E':
+							$midw = 53;
+							$midr = 55;
+							break;
+						case 'F':
+							$midw = 55;
+							$midr = 53;
+							break;
+						case 'G':
+							$midw = 54;
+							$midr = 56;
+							break;
+						case 'H':
+							$midw = 56;
+							$midr = 54;
+							break;
+					}
+					$this->User->Prediction->Match->id = $midw;
+					$this->User->Prediction->Match->saveField('teama_id', $data['winner']);
+					$this->User->Prediction->Match->id = $midr;
+					$this->User->Prediction->Match->saveField('teamb_id', $data['ru']);
+
+				}
+			} else {
+				throw new NotFoundException();
+			}
+		}
+
+	} // end setko
 
 	// auth stuff below
 	public function beforeFilter() {

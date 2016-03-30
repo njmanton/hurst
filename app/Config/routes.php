@@ -29,6 +29,7 @@
  * ...and connect the rest of 'Pages' controller's URLs.
  */
 	Router::connect('/league', array('controller' => 'users', 'action' => 'index'));
+	Router::connect('/analytics', ['controller' => 'pages', 'action' => 'display', 'analytics']);
 	Router::connect('/about/*', array('controller' => 'pages', 'action' => 'display'));
 	Router::connect('/content/*', array('controller' => 'pages', 'action' => 'display'));
 	Router::connect('/results/*', array('controller' => 'matches', 'action' => 'result'));

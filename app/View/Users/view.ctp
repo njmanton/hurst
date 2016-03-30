@@ -57,7 +57,7 @@
 		<?php endforeach; ?>
 
 		<h4 id="tables">Predicted Tables</h4>
-		<p>Tables are based on the predictions above, and results (when known)</p>
+		<p>Tables are based on the predictions above</p>
 		<?php
 			foreach ($predleagues as $k=>$t) {
 				echo $this->element('league_table', array('table' => $t, 'caption' => __('Group %s', $k)));

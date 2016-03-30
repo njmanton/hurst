@@ -111,6 +111,10 @@ CakeLog::config('admin', array(
 	'engine' => 'File',
 	'file' => 'admin'
 ));
+CakeLog::config('pred', array(
+	'engine' => 'File',
+	'file' => 'pred'
+));
 
 const APP_NAME = 'World Cup Goalmine';
 const APP_VERSION = 'v0.1';

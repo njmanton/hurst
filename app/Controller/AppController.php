@@ -15,7 +15,7 @@ class AppController extends Controller {
 
 	public function beforeFilter() {
 		// set up permitted views when not logged in
-		$this->Auth->allow('index', 'view', 'api_index', 'admin_edit');
+		$this->Auth->allow('view', 'api_index', 'admin_edit');
 		// set user variable so available in all views (and layouts)
 		$this->set('user',$this->Auth->user());
 	}

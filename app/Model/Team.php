@@ -89,11 +89,13 @@ class Team extends AppModel {
 	Function:		getTable
 	Desc:				for selected team, get all match details
 							and calculate the group standings
-	Params:			$id - team
+	Params:			$tid - team id
+							$uid - user (for predictions)
+							$preds - true if using preds
 	Returns:		array
 	Date:				11/12/13
 	----------------------------------------------------*/
-	public function getTable($tid = null, $uid = null) {
+	public function getTable($tid = null, $uid = null, $preds = false) {
 
 		if (is_null($tid)) {
 			return false;
@@ -133,11 +135,12 @@ class Team extends AppModel {
 
 			if (!is_null($m['M']['result']) || !is_null($m['P']['prediction'])) {
 
-				if (is_null($m['M']['result'])) {
+				if ($preds) {
 					list($hs, $as) = explode('-', $m['P']['prediction']);
 				} else {
 					list($hs, $as) = explode('-', $m['M']['result']);
 				}
+
 
 				$standings[$h]['P']++;
 				$standings[$a]['P']++;

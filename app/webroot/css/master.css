@@ -6,6 +6,9 @@ master.scss
 @import url("foundation.css");
 @import url("flags32.css");
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600");
+a {
+  color: #2ba6cb; }
+
 table {
   border-collapse: separate;
   border-spacing: 5px;
@@ -34,7 +37,7 @@ table {
       font-weight: bold; }
   table.pgrid {
     border-collapse: collapse;
-    font-size: 1.8em; }
+    font-size: 1.2em; }
   table.teams {
     border-collapse: collapse;
     border-spacing: 0;
@@ -233,6 +236,9 @@ ol li {
 figure a {
   margin: 0 auto; }
 
+article {
+  margin-top: 2rem; }
+
 .orphan-center {
   margin: 0 auto 1.5em 0;
   text-align: center;
@@ -397,6 +403,9 @@ img.badge {
 
 .infobox h4 {
   color: #4c4a59; }
+
+#chartlist img {
+  margin: 1rem 0; }
 
 @media all and (min-width: 850px) {
   nav:not(#mainnav) {

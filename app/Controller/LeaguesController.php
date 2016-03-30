@@ -184,6 +184,19 @@ class LeaguesController extends AppController {
 			);
 
 			$this->set('pending', $this->League->LeagueUser->find('all', $arr));
+
+			// if organiser, set list of possible invitees (users not already members)
+			$sql = 'SELECT U.id, U.username
+							FROM users U
+							WHERE U.validated = 1 AND U.id NOT IN (
+								SELECT user_id
+								FROM league_users
+								WHERE confirmed = 1 AND league_id = ?
+							)';
+			$db = $this->League->getDataSource();
+			$res = $db->fetchAll($sql, [$lid]);
+			$this->set('invitees', $res);
+
 		}
 
 	} // end view
@@ -249,5 +262,11 @@ class LeaguesController extends AppController {
 		}
 
 	} // end pending
+
+	// auth stuff below
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('index');
+	}
 
 } // end class

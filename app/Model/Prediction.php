@@ -70,6 +70,9 @@ class Prediction extends AppModel {
 
 			// get the UTC datetime for each game
 			$md = new DateTime($r['M']['date']);
+			$noon = new DateTime($r['M']['date']);
+			$noon->modify('noon');
+
 			// only include matches that have both teams assigned
 			if (is_numeric($r['M']['teama_id']) && (is_numeric($r['M']['teamb_id']))) {
 				
@@ -84,7 +87,7 @@ class Prediction extends AppModel {
 					'venue' => __('<a href="/venues/%s">%s</a>', $r['V']['id'], $r['V']['city']),
 					'teama' => __('<a href="/teams/%s">%s</a>', $r['TA']['id'], $r['TA']['name']),
 					'teamb' => __('<a href="/teams/%s">%s</a>', $r['TB']['id'], $r['TB']['name']),
-					'exp' => ($now > $md) || $r['M']['result'],
+					'exp' => ($now > $noon) || $r['M']['result'],
 					'joker' => $r['P']['joker']
 				];
 			}			

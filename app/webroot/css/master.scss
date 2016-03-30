@@ -9,6 +9,8 @@ master.scss
 @import url('flags32.css');
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,600');
 
+a { color: #2ba6cb; }
+
 // site-wide colours
 $bg-clr: #4c4a59;
 $fg-clr: #eee;
@@ -16,7 +18,7 @@ $nav-clr: rgba(44,42,51,0.8);
 $sb-clr: #333;
 
 // table colours
-$team-clr: #d6063a; $team-clr: #00a859;
+$team-clr: #00a859;
 $score-clr: #280661;
 $exp-clr: #333;
 $hilite-clr: #cef6e3;
@@ -71,6 +73,10 @@ ol li {
 
 figure a {
 	margin: 0 auto;
+}
+
+article {
+	margin-top: 2rem;
 }
 
 .orphan-center {
@@ -272,6 +278,12 @@ img.badge {
 	h4 {
 		color: $bg-clr;
 	}
+}
+
+// svg stuff
+
+#chartlist img {
+	margin: 1rem 0;
 }
 
 // last

@@ -5,6 +5,8 @@ class PredictionsController extends AppController {
 	public $name = 'Predictions';
 	public $helpers = array('Html', 'Form');
 
+	public $pred = [];
+
 	public function index() {
 
 		$user = $this->Auth->user();
@@ -90,6 +92,7 @@ class PredictionsController extends AppController {
 
 			if ($this->Prediction->save($tosave)) {
 				$response = $this->Prediction->id;
+				$this->log(json_encode($tosave), 'pred');
 			} else {
 				$response = false;
 			}
@@ -115,6 +118,7 @@ class PredictionsController extends AppController {
 				$this->Prediction->id = $p;
 				if ($p) {
 					$res += (int)$this->Prediction->saveField('joker', ($p == $data['sel']));
+					$this->log(json_encode($tosave), 'pred');
 				}
 			}
 			// return the number of updated records
@@ -125,5 +129,63 @@ class PredictionsController extends AppController {
 		}
 
 	} // end updatej
+
+	public function bubble() {
+
+		if ($this->request->is('ajax')) {
+			$this->autoRender = false;
+			$arr = [
+				'fields' => ['LEFT(prediction,1) AS x', 'RIGHT(prediction,1) AS y', 'COUNT(Prediction.id) AS z'],
+				'group' => ['LEFT(prediction,1)', 'RIGHT(prediction,1)'],
+				'recursive' => 0
+			];
+			$data = $this->Prediction->find('all', $arr);
+			foreach ($data as $d) {
+				$pred['PredTotal'] += $d[0]['z'];
+				$pred['Pred'][] = [
+					'x' => (int) $d[0]['x'],
+					'y' => (int) $d[0]['y'],
+					'z' => (int) $d[0]['z']
+				];
+			}
+
+			foreach ($pred['Pred'] as &$p) {
+				$p['z'] /= ($pred['PredTotal'] / 100);
+			} 
+
+			$arr = [
+				'fields' => ['LEFT(result,1) AS x', 'RIGHT(result,1) AS y', 'COUNT(Match.id) AS z'],
+				'group' => ['LEFT(result,1)', 'RIGHT(result,1)'],
+				'recursive' => 0
+			];
+			$data2 = $this->Prediction->Match->find('all', $arr);
+			foreach ($data2 as $d) {
+				if (!is_null($d[0]['x'])) {
+					$pred['ResultTotal'] += $d[0]['z'];
+					$pred['Result'][] = [
+						'x' => (int) $d[0]['x'],
+						'y' => (int) $d[0]['y'],
+						'z' => (int) $d[0]['z']
+					];
+				}
+			}
+
+			foreach ($pred['Result'] as &$r) {
+				$r['z'] /= ($pred['ResultTotal'] / 100);
+			}
+
+			return (json_encode($pred));
+
+		} else {
+			throw new MethodNotAllowedException();
+		}
+
+	} // end bubble
+
+	public function beforeFilter() {
+		// set up permitted views when not logged in
+		parent::beforeFilter();
+		$this->Auth->allow('bubble');
+	}
 
 } // end class

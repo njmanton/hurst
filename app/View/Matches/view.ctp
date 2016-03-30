@@ -44,9 +44,9 @@
 			</tbody>
 		</table>
 
-		<section>
+		<section class="row">
 			<?php if (!empty($preds)): ?>
-			<div class="small-6 columns">
+			<div class="large-6 small-12 columns">
 				<table class="league pgrid">
 					<caption>Predictions</caption>
 					<tbody>
@@ -60,7 +60,7 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="small-6 columns" id="hchart">
+			<div class="large-6 small-12 columns" id="hchart">
 
 			</div>
 			<?php endif; ?>

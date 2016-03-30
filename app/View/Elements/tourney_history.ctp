@@ -9,11 +9,11 @@
 	<img src="/img/posters/<?php echo $tourney['year'] ?>s.png" alt="Tournament Poster">
 	<div>
 		<p>
-			<strong>Hosts</strong><br>
+			<strong>Hosts: </strong>
 			<?php echo $tourney['host']; ?>
 		</p>
 		<p>
-			<strong>Champions</strong><br>
+			<strong>Champions: </strong>
 			<?php echo __('<a href="/teams/%s">%s</a>', $tourney['champion_id'], $tourney['champions']); ?>
 		</p>
 		<p>

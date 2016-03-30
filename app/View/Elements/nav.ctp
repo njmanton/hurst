@@ -12,6 +12,7 @@
 		<li><a href="/league/">LEAGUE</a></li>
 		<li><a id="showml" href="#">MATCHES</a></li>
 		<li><a id="showtl" href="#">TEAMS</a></li>
+		<li><a href="/analytics/">STATS</a></li>
 		<li><a href="/users/logout">LOGOUT</a></li>
 	</ul>
 	<?php else: ?>

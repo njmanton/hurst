@@ -58,7 +58,7 @@ class TeamsController extends AppController {
 	public function beforeFilter() {
 		// set up permitted views when not logged in
 		parent::beforeFilter();
-		$this->Auth->allow('head');
+		$this->Auth->allow('head', 'index');
 	}
 
 } // end class

@@ -13,6 +13,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
 	<script>window.jQuery || document.write ('<script src="/js/vendor/jquery-1.11.0.min.js">\x3C/script>')</script>
 	<script src="/js/vendor/highcharts.js"></script>
+	<script src="/js/vendor/highcharts-more.js"></script>
 </head>
 <body>
 	<div>

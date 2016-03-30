@@ -24,5 +24,11 @@ class GoalsController extends AppController {
 
 	} // end scorers
 
+	public function beforeFilter() {
+		// set up permitted views when not logged in
+		parent::beforeFilter();
+		$this->Auth->allow('scorers', 'index');
+	}
+
 
 } // end class
